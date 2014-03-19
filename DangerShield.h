@@ -1,5 +1,5 @@
 /*
- Danger Shield library
+ Danger Shield library for DangerShield v1.7
  Written by Maarten de Boer 10-3-2014
 
  Original code written by Chris Taylor 3-3-2010
@@ -18,25 +18,29 @@
 #include "Arduino.h"
 
 // Analog
-#define SLIDER1  A0
+#define SLIDER1  A2 //Matches button 1
 #define SLIDER2  A1
-#define SLIDER3  A2
+#define SLIDER3  A0 //Matches button 3
 
 #define LIGHT    A3
 #define TEMP     A4
-#define KNOCK    A5
 
 // Digital
+#define BUZZER   3
 #define DATA     4
+
 #define LED1     5
 #define LED2     6
+
 #define LATCH    7
 #define CLOCK    8
-#define BUZZER   9
 
 #define BUTTON1  10
 #define BUTTON2  11
 #define BUTTON3  12
+
+// This version has a capacitive sensor which relies on the Capactive Sensor library
+// which can be found here: http://playground.arduino.cc/Main/CapacitiveSensor
 
 // 7-segment display
 const byte ledCharSet[11] = {
@@ -61,8 +65,11 @@ class DangerShieldClass {
 		// Temperature
 		float readTemperature();
 
+		// Remapped light sensor
+		long readLight(int min, int max);
+
 		// Remapped slider
-		int readSlider(int pin, int min, int max);
+		long readSlider(int pin, int min, int max);
 
 		// 7-segment display
 		void setSegmentDisplay(char value);
