@@ -1,5 +1,5 @@
 /*
- Danger Shield library
+ Danger Shield library for DangerShield v1.6
  Written by Maarten de Boer 10-3-2014
 
  Original code written by Chris Taylor 3-3-2010
@@ -61,8 +61,11 @@ class DangerShieldClass {
 		// Temperature
 		float readTemperature();
 
+		// Remapped light sensor
+		long readLight(int min, int max);
+
 		// Remapped slider
-		int readSlider(int pin, int min, int max);
+		long readSlider(int pin, int min, int max);
 
 		// 7-segment display
 		void setSegmentDisplay(char value);

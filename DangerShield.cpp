@@ -1,5 +1,5 @@
 /*
- Danger Shield library
+ Danger Shield library for DangerShield v1.6
  Written by Maarten de Boer 10-3-2014
 
  Original code written by Chris Taylor 3-3-2010
@@ -61,14 +61,26 @@ float DangerShieldClass::readTemperature() {
 }
 
 /**
+ * readLight
+ *
+ * Read the value from the analog LDR (light sensor) and return its value
+ * remapped to the specified min and max value.
+ *
+ * @returns long Relative intensity of measured light, remapped to the specified min and max
+*/
+long DangerShieldClass::readLight(int min, int max) {
+	return map(analogRead(LIGHT), 0, 1023, min, max);
+}
+
+/**
  * readSlider
  *
  * Read the value from an analog slider and return its value
  * remapped to the specified min and max value.
  *
- * @returns int Value of the specified slider, remapped to the specified min and max
+ * @returns long Value of the specified slider, remapped to the specified min and max
 */
-int DangerShieldClass::readSlider(int pin, int min, int max) {
+long DangerShieldClass::readSlider(int pin, int min, int max) {
 	return map(analogRead(pin), 0, 1023, min, max);
 }
 
