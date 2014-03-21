@@ -117,7 +117,6 @@ void DangerShieldClass::setSegmentDisplay(char value) {
 */
 void DangerShieldClass::setSegmentDisplay(int value) {
 	if(value < 0 || value > 9) {
-		Serial.println(value);
 		return;
 	}
 
@@ -134,7 +133,7 @@ void DangerShieldClass::setSegmentDisplay(int value) {
 */
 void DangerShieldClass::clearSegmentDisplay() {
 	digitalWrite(LATCH, LOW);
-	shiftOut(DATA, CLOCK, MSBFIRST, B00000000);
+	shiftOut(DATA, CLOCK, MSBFIRST, B11111111);
 	digitalWrite(LATCH, HIGH);
 }
 
